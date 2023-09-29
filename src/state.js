@@ -3,10 +3,16 @@ import axios from 'axios';
 
 
 export const state = reactive({
+    urlMovieBase: 'https://api.themoviedb.org/3/search/movie?api_key=aa76fd69b0e817c63385eca34e50fd93&language=it_IT&query=',
+    urlSeriesBase: 'https://api.themoviedb.org/3/search/tv?api_key=aa76fd69b0e817c63385eca34e50fd93&language=it_IT&query=',
 
-    urlBase: 'https://api.themoviedb.org/3/search/movie?api_key=aa76fd69b0e817c63385eca34e50fd93&query=',
-    filmSearched: '',
-    results: '',
+    searched: '',
+
+    movies: '',
+    series: '',
+
+    flagCountry: '',
+
 
     fetchMovieByName(url) {
 
@@ -14,12 +20,25 @@ export const state = reactive({
             .get(url)
             .then(response => {
 
-                this.results = response.data.results
+                this.movies = response.data.results
 
             })
             .catch(error => {
                 console.error(error);
             })
 
+    },
+    fetchSeriesByName(url) {
+
+        axios
+            .get(url)
+            .then(response => {
+
+                this.series = response.data.results
+
+            })
+            .catch(error => {
+                console.error(error);
+            })
     },
 })
