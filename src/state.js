@@ -10,6 +10,8 @@ export const state = reactive({
 
     movies: '',
     series: '',
+    coverPath: 'https://image.tmdb.org/t/p/',
+
 
     flagCountry: '',
 

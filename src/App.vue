@@ -4,7 +4,7 @@ export default {
   name: 'App',
   data() {
     return {
-      state
+      state,
     }
   },
   components: {
@@ -31,33 +31,54 @@ export default {
 
 
   <div class="d-flex justify-content-evenly">
-    <ul>
-      <li>
-        <h1>FILM</h1>
-      </li>
-      <li v-for="movie in this.state.movies">
-        <div>TITOLO: {{ movie.title }}</div>
-        <div>TITOLO ORIGINALE: {{ movie.original_title }}</div>
-        <div>VOTO: {{ movie.vote_average }}</div>
-        <div>LINGUA: {{ movie.original_language.toUpperCase() }} <img width="30"
-            src="https://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg" alt="">
-        </div>
-      </li>
-    </ul>
 
-    <ul>
-      <li>
-        <h1>SERIE</h1>
-      </li>
-      <li v-for="series in this.state.series">
-        <div>TITOLO: {{ series.name }}</div>
-        <div>TITOLO ORIGINALE: {{ series.original_name }}</div>
-        <div>VOTO: {{ series.vote_average }}</div>
-        <div>LINGUA: {{ series.original_language.toUpperCase() }} <img width="30"
-            src="https://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg" alt="">
+    <div>
+      <div class="card" v-for="movie in this.state.movies">
+        <img width="100" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path" alt="">
+        <div class="card-body">
+          <div>TITOLO: {{ movie.title }}</div>
+          <div>TITOLO ORIGINALE: {{ movie.original_title }}</div>
+          <div>
+            <span>VOTO: {{ Math.round(movie.vote_average / 2) }}</span>
+            <span>
+              <i class="fa-solid fa-star" v-for="n in Math.round(movie.vote_average / 2)"></i>
+
+            </span>
+          </div>
+          <div>LINGUA: {{ movie.original_language.toUpperCase() }} <img width="30"
+              :src="'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + movie.original_language.toUpperCase() + '.svg'"
+              alt="">
+
+          </div>
+
         </div>
-      </li>
-    </ul>
+
+      </div>
+    </div>
+
+
+    <div>
+      <div class="card" v-for="serie in this.state.series">
+        <img width="100" :src="'https://image.tmdb.org/t/p/w342' + serie.poster_path" alt="">
+        <div class="card-body">
+          <div>TITOLO: {{ serie.name }}</div>
+          <div>TITOLO ORIGINALE: {{ serie.original_name }}</div>
+          <div>
+            <span>VOTO: {{ Math.round(serie.vote_average / 2) }}</span>
+            <span><i class="fa-solid fa-star" v-for="n in Math.round(serie.vote_average / 2)"></i></span>
+          </div>
+          <div>LINGUA: {{ serie.original_language.toUpperCase() }} <img width="30"
+              :src="'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + serie.original_language.toUpperCase() + '.svg'"
+              alt="">
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 <style scoped></style>
