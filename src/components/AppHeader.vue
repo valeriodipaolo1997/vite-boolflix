@@ -32,17 +32,15 @@ export default {
             <div id="logo">
 
                 <img width="230" src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="logo">
-
             </div>
-
+            
             <div id="search d-flex">
 
                 <input type="search" name="name" id="name" v-model="this.state.searched">
 
-                <button class="btn btn-primary" @click="searchFilmSeries(); searchSeriesByName()">CERCA</button>
+                <button class="btn btn-primary" @click="searchFilmSeries(); searchSeriesByName()">Search</button>
 
             </div>
-
         </div>
 
     </header>

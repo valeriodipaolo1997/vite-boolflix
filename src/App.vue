@@ -34,5 +34,9 @@ export default {
   </main>
 </template>
 <style scoped>
- 
+ main {
+  height: calc(100vh - 70px);
+  background-color: black;
+  overflow-y: auto;
+}
 </style>
