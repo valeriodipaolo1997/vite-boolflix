@@ -153,6 +153,7 @@ export default {
 .card {
     position: relative;
     height: 300px;
+    border: none;
 
     img {
         height: 100%;

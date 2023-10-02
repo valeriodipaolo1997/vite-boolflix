@@ -73,8 +73,8 @@ export default {
                         </h6>
 
                         <img width="30"
-                            :src="'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + movie.original_language.toUpperCase() + '.svg'"
-                            alt="">
+                                :src="movie.original_language.toUpperCase() == 'EN' ? 'https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg' : 'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + movie.original_language.toUpperCase() + '.svg'"
+                                alt="">
 
                     </div>
 
