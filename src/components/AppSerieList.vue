@@ -10,6 +10,9 @@ export default {
     components: {
     },
     methods: {
+        getImageUrl(path) {
+            return new URL(path, import.meta.url).href
+        }
     },
 }
 </script>
@@ -21,7 +24,8 @@ export default {
 
             <div class="card">
 
-                <img :src="'https://image.tmdb.org/t/p/w342' + serie.poster_path" alt="">
+                <img :src="'https://image.tmdb.org/t/p/w342' + serie.poster_path" alt=""
+                @error="$event.target.src = getImageUrl('../assets/img/image-not-found.jpg')">
 
                 <div class="card-body text-center flex-column justify-content-between">
 
