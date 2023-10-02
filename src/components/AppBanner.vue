@@ -5,7 +5,11 @@ export default {
     name: 'AppBanner',
     data() {
         return {
-            state
+            state,
+            countMovieStart: 0,
+            countMovieEnd: 6,
+            countSerieStart: 0,
+            countSerieEnd: 6,
         }
     },
     created() {
@@ -18,8 +22,13 @@ export default {
 <template>
     <div class="container">
         <h2>I migliori film di sempre</h2>
+        <button
+            @click="countMovieStart > 0 ? countMovieStart -= 6 : countMovieStart = 0; countMovieEnd > 6 ? countMovieEnd -= 6 : countMovieEnd = 6">Prev</button>
+        <button
+            @click="countMovieStart < 18 ? countMovieStart += 6 : countMovieStart = 18; countMovieEnd < 24 ? countMovieEnd += 6 : countMovieEnd = 24">Next</button>
+
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3 mb-3">
-            <div class="col" v-for="bestMovie in this.state.bestMovie.slice(0, 6)">
+            <div class="col" v-for="bestMovie in this.state.bestMovie.slice(this.countMovieStart, this.countMovieEnd)">
                 <div class="card">
 
                     <img class="cover" :src="'https://image.tmdb.org/t/p/w342' + bestMovie.poster_path" alt="">
@@ -83,8 +92,12 @@ export default {
 
 
         <h2>Le migliori serie di sempre</h2>
+        <button 
+            @click="countSerieStart > 0 ? countSerieStart -= 6 : countSerieStart = 0; countSerieEnd > 6 ? countSerieEnd -= 6 : countSerieEnd = 6">Prev</button>
+        <button
+            @click="countSerieStart < 18 ? countSerieStart += 6 : countSerieStart = 18; countSerieEnd < 24 ? countSerieEnd += 6 : countSerieEnd = 24">Next</button>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3 mb-3">
-            <div class="col" v-for="bestSerie in this.state.bestSeries.slice(0, 6)">
+            <div class="col" v-for="bestSerie in this.state.bestSeries.slice(this.countSerieStart, this.countSerieEnd)">
                 <div class="card">
 
                     <img class="cover" :src="'https://image.tmdb.org/t/p/w342' + bestSerie.poster_path" alt="">
@@ -180,5 +193,7 @@ export default {
     }
 
 }
+
+
 
 </style>
